@@ -71,15 +71,23 @@ public class Main {
 	}
 
 	double[] berechnung(double L1, double d1, double L2, double d2, double dichte) {
-		double volumen = 0, flaeche = 0, gewicht = 0;
+		double volumen1 = 0, volumen2 = 0, flaeche1 = 0, flaeche2 = 0, gewicht1 = 0, gewicht2 = 0;
+		double gesamtVolumen = 0, gesamtFlaeche = 0, gesamtMasse = 0;
 		double[] werteArray = new double[3];
-		volumen = volumenBerechnen(L1, d1) + volumenBerechnen(L2, d2);
-		flaeche = flaecheBerechnen(L1, d1) + flaecheBerechnen(L2, d2);
-		gewicht = berechneMasse(volumen, dichte);
+		volumen1 = volumenBerechnen(L1, d1);
+		volumen2 = volumenBerechnen(L2, d2);
+		flaeche1 = flaecheBerechnen(L1, d1);
+		flaeche2 = flaecheBerechnen(L2, d2);
+		gewicht1 = berechneMasse(volumen1, dichte);
+		gewicht2 = berechneMasse(volumen2, dichte);
 
-		werteArray[0] = volumen;
-		werteArray[1] = flaeche;
-		werteArray[2] = gewicht;
+		gesamtVolumen = volumen1 + volumen2;
+		gesamtFlaeche = (flaeche1 + flaeche2) - (2 * (Math.pow(d2 / 2, 2) * PI));
+		gesamtMasse = gewicht1 + gewicht2;
+
+		werteArray[0] = gesamtVolumen;
+		werteArray[1] = gesamtFlaeche;
+		werteArray[2] = gesamtMasse;
 
 		return werteArray;
 
@@ -90,8 +98,8 @@ public class Main {
 		System.out.printf("Gesamtfläche: %.2f cm²%n", flaeche);
 		System.out.printf("Gesamtgewicht: %.2f kg%n", gewicht);
 	}
-	
-	double berechneMasse(double volumen, double dichte){
+
+	double berechneMasse(double volumen, double dichte) {
 		return (volumen * dichte) / 1000;
 	}
 
