@@ -75,7 +75,7 @@ public class Main {
 		double[] werteArray = new double[3];
 		volumen = volumenBerechnen(L1, d1) + volumenBerechnen(L2, d2);
 		flaeche = flaecheBerechnen(L1, d1) + flaecheBerechnen(L2, d2);
-		gewicht = (dichte * volumen) / 1000;
+		gewicht = berechneMasse(volumen, dichte);
 
 		werteArray[0] = volumen;
 		werteArray[1] = flaeche;
@@ -89,6 +89,10 @@ public class Main {
 		System.out.printf("Gesamtvolumen: %.2f cm³%n", volumen);
 		System.out.printf("Gesamtfläche: %.2f cm²%n", flaeche);
 		System.out.printf("Gesamtgewicht: %.2f kg%n", gewicht);
+	}
+	
+	double berechneMasse(double volumen, double dichte){
+		return (volumen * dichte) / 1000;
 	}
 
 	void menue() {
