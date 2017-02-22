@@ -12,7 +12,7 @@ public class Main {
 		werteArray = m.berechnung(werteArray[0], werteArray[1], werteArray[2], werteArray[3], werteArray[4]);
 		m.ausgabe(werteArray[0], werteArray[1], werteArray[2]);
 	}
-
+	
 	double[] eingabe() {
 		Scanner sc = new Scanner(System.in);
 		double L1 = 0, L2 = 0;
